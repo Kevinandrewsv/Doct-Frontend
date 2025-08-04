@@ -1,33 +1,49 @@
 import React from 'react';
 import { assets } from '../assets/assets';
 
-const Header = () => {
-    return (
-        <div className='flex flex-col md:flex-row items-center bg-gradient-to-r from-gray-200 to-teal-300 rounded-lg px-10 md:px-20 lg:px-32 py-14 md:py-28 my-10 md:my-25 shadow-lg'>
+const Header = () => (
+  <section className="w-full max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center bg-gradient-to-r from-sky-100 via-white to-teal-50 rounded-xl shadow-lg overflow-hidden my-16">
+    {/* --------- Left: Image --------- */}
+    <div className="w-full md:w-1/2 flex justify-center md:justify-start p-8 md:p-12">
+      <img
+        src={assets.header_img}
+        alt="Doctor"
+        className="w-80 md:w-[28rem] lg:w-[32rem] h-auto object-cover rounded-lg"
+      />
+    </div>
 
-            {/* --------- Header Left --------- */}
-            <div className='md:w-1/2 flex flex-col items-start justify-center gap-8 text-center md:text-left'>
-                <p className='text-3xl md:text-4xl lg:text-5xl text-gray-800 font-semibold leading-snug'>
-                    Your Health, Our Priority. <br /> Connect with Trusted Doctors Today.
-                </p>
-                <a href='#speciality' className='flex items-center gap-2 bg-white px-10 py-4 rounded-full text-gray-700 text-base shadow-md hover:bg-gray-200 hover:scale-105 transition-transform duration-300'>
-                    Book appointment <img className='w-4' src={assets.arrow_icon} alt="Arrow icon" />
-                </a>
-            </div>
+    {/* --------- Right: Text & Button --------- */}
+    <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center space-y-6">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+        Your Health, Our Priority. <br />
+        Trusted Doctors, Just a Click Away.
+      </h1>
+      <p className="text-base md:text-lg text-gray-700">
+        Instant appointments, secure consultations, and personalized care plans—right
+        from the comfort of your home.
+      </p>
+     <a
+  href="#speciality"
+  className="inline-flex items-center gap-2 px-6 py-2 text-sm font-semibold rounded-full bg-gradient-to-r from-teal-500 to-sky-500 text-white shadow-md hover:scale-105 transition-transform duration-300"
+>
+  Book Appointment
+  <svg
+    className="w-4 h-4"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M17 8l4 4m0 0l-4 4m4-4H3"
+    />
+  </svg>
+</a>
 
-            {/* --------- Header Right --------- */}
-            <div className='md:w-1/2 flex items-center justify-center py-6 md:py-0 relative'>
-                <div className='relative group'>
-                    {/* Image with Hover Glow */}
-                    <img 
-                        className='w-full max-w-md md:max-w-lg lg:max-w-xl h-auto rounded-lg transition-transform duration-300 transform group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(56,178,172,0.7)]' 
-                        src={assets.header_img} 
-                        alt="Doctor Image" 
-                    />
-                </div>
-            </div>
-        </div>
-    );
-}
+    </div>
+  </section>
+);
 
 export default Header;

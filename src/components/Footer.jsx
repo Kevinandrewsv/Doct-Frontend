@@ -1,56 +1,98 @@
+// src/components/Footer.jsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { assets } from '../assets/assets';
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from 'react-icons/fa';
 
 const Footer = () => {
-  return (
-    <div className="mt-16 md:mt-24 md:mx-5 bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg p-4 shadow-md">
-      <div className="flex flex-col sm:grid grid-cols-[2fr_1fr_1fr] gap-6 my-8 text-sm">
+  const navigate = useNavigate();
 
-        {/* Logo and Description */}
-        <div className="flex flex-col items-start">
-          <img 
-            className="mb-4 w-28 opacity-90 hover:opacity-100 transition-opacity duration-300 hover:scale-105 transform cursor-pointer" 
-            src={assets.logo} 
-            alt="Doct Logo" 
-          />
-          <p className="w-full md:w-3/4 text-gray-600 leading-relaxed mt-2 text-sm">
-            Doct is your trusted healthcare partner, providing access to 100+ experienced doctors for reliable consultations. We're here to ensure you receive the best care and guidance.
+  const goHome = () => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
+
+  const goAbout = () => {
+    navigate('/about');
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <footer className="mt-16 md:mt-24 mx-4 md:mx-8 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8 backdrop-blur-sm bg-white/40 shadow-lg">
+      {/* Logo & Title */}
+      <div
+        className="flex items-center gap-2 cursor-pointer mb-8"
+        onClick={goHome}
+      >
+        <img src={assets.logo} alt="Doct Logo" className="w-10 h-10" />
+        <span className="text-2xl font-bold text-teal-600">Doct.</span>
+      </div>
+
+      {/* Top Section */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Description */}
+        <div className="space-y-4">
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Doct is your trusted healthcare partner, connecting you
+            with 100+ experienced doctors for reliable teleconsultations
+            and in-person visits.
           </p>
         </div>
 
-        {/* Company Links */}
+        {/* Navigation Links */}
         <div>
-          <p className="text-base font-medium mb-3 text-gray-800">COMPANY</p>
-          <ul className="flex flex-col gap-1 text-gray-600">
-            <li className="hover:text-indigo-600 hover:underline transition duration-200 cursor-pointer">Home</li>
-            <li className="hover:text-indigo-600 hover:underline transition duration-200 cursor-pointer">About us</li>
-            <li className="hover:text-indigo-600 hover:underline transition duration-200 cursor-pointer">Delivery</li>
-            <li className="hover:text-indigo-600 hover:underline transition duration-200 cursor-pointer">Privacy policy</li>
+          <h3 className="text-gray-800 font-semibold mb-3">Company</h3>
+          <ul className="space-y-2 text-gray-600 text-sm">
+            <li
+              className="cursor-pointer"
+              onClick={() => {
+                goHome();
+              }}
+            >
+              Home
+            </li>
+            <li
+              className="cursor-pointer"
+              onClick={() => {
+                goAbout();
+              }}
+            >
+              About Us
+            </li>
+            <li>Delivery</li>
+            <li>Privacy Policy</li>
           </ul>
         </div>
 
         {/* Contact Info */}
         <div>
-          <p className="text-base font-medium mb-3 text-gray-800">GET IN TOUCH</p>
-          <ul className="flex flex-col gap-1 text-gray-600">
-            <li className="hover:text-indigo-600 transition duration-200 cursor-pointer flex items-center">
-              <span>+91 9994053302</span>
-            </li>
-            <li className="hover:text-indigo-600 transition duration-200 cursor-pointer flex items-center">
-              <span>doct@gmail.com</span>
-            </li>
+          <h3 className="text-gray-800 font-semibold mb-3">Get in Touch</h3>
+          <ul className="space-y-2 text-gray-600 text-sm">
+            <li>+91 99940 53302</li>
+            <li>doct@gmail.com</li>
           </ul>
         </div>
       </div>
 
-      {/* Footer Bottom */}
-      <div>
-        <hr className="border-gray-300 mb-3" />
-        <p className="py-3 text-xs text-center text-gray-500">
-          &copy; 2024 Doct.netlify.com - All Rights Reserved.
-        </p>
+      {/* Divider */}
+      <div className="border-t border-gray-300 my-6" />
+
+      {/* Bottom Section */}
+      <div className="flex flex-col md:flex-row items-center justify-between text-gray-500 text-xs">
+        <p>© 2024 Doct.netlify.com — All rights reserved.</p>
+        <div className="flex space-x-4 mt-4 md:mt-0">
+          <FaFacebookF size={14} />
+          <FaTwitter size={14} />
+          <FaLinkedinIn size={14} />
+          <FaInstagram size={14} />
+        </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
